@@ -14,7 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = client::all();
+        return view('admin.client.index' , compact('clients'));
     }
 
     /**
@@ -50,7 +51,7 @@ class ClientController extends Controller
             $clients->image = 'image/' . $name;
         }
         $clients->save();
-        return redirect()->back();
+        return redirect()->route('client.index');
     }
 
     /**
@@ -70,9 +71,10 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(client $client)
+    public function edit($id)
     {
-        //
+        $client = client::find($id);
+        return view('admin.client.edit' , compact('client'));
     }
 
     /**
@@ -82,9 +84,23 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, client $client)
+    public function update(Request $request, $id)
     {
-        //
+        $client = client::find($id);
+        $client->name = $request-> name;
+        $client->cnic = $request-> cnic;
+        $client->dob = $request-> dob;
+        $client->description = $request->description;
+        if ($request->hasFile('image'))
+        {
+            $image1 = $request->file('image');
+            $name = time(). 'image' . '.' . $image1->getClientOriginalExtension();
+            $destinationPath = 'image/';
+            $image1->move($destinationPath,$name);
+            $client->image = 'image/' . $name;
+        }
+        $client->update();
+        return redirect()->route('client.index');
     }
 
     /**
@@ -93,8 +109,10 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(client $client)
+    public function destroy($id)
     {
-        //
+        $client = client::find($id);
+        $client->delete();
+        return redirect()->route('client.index');
     }
 }
