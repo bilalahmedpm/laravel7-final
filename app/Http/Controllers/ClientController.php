@@ -100,7 +100,7 @@ class ClientController extends Controller
             $client->image = 'image/' . $name;
         }
         $client->update();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('message', 'Record Updated Successfully !');
     }
 
     /**
@@ -113,6 +113,6 @@ class ClientController extends Controller
     {
         $client = client::find($id);
         $client->delete();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('message', 'Record Deleted Successfully !');;
     }
 }
