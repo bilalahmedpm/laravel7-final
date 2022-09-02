@@ -1,3 +1,4 @@
+</div>
 <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
@@ -10,7 +11,7 @@
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -54,6 +55,10 @@
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<!-- SweetAlert2 -->
+<script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<!-- Toastr -->
+<script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
@@ -76,6 +81,42 @@
             "responsive": true,
         });
     });
+</script>
+<script>
+    @if(Session::has('message'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.success("{{ session('message') }}");
+    @endif
+
+        @if(Session::has('error'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.error("{{ session('error') }}");
+    @endif
+        @if(Session::has('info'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.info("{{ session('info') }}");
+    @endif
+
+        @if(Session::has('warning'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.warning("{{ session('warning') }}");
+    @endif
 </script>
 </body>
 </html>

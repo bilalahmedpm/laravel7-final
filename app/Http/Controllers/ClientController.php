@@ -113,6 +113,6 @@ class ClientController extends Controller
     {
         $client = client::find($id);
         $client->delete();
-        return redirect()->route('client.index')->with('message', 'Record Deleted Successfully !');;
+        return redirect()->route('client.index')->with('error', 'Record Deleted Successfully !');;
     }
 }
