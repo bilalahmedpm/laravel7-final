@@ -30,5 +30,6 @@ class ClientMail extends Mailable
     {
         return $this->from('bilalmujahid89@gmail.com', 'Laravel')
             ->view('admin.mail')->with(['client' => $this->client]);
+
     }
 }
