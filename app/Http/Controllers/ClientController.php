@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\client;
+use App\Mail\ClientMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller
 {
@@ -42,6 +44,8 @@ class ClientController extends Controller
         $clients->cnic = $request-> cnic;
         $clients->dob = $request-> dob;
         $clients->description = $request->description;
+
+        Mail::to($request->email)->send(new  ClientMail($clients));
         if ($request->hasFile('image'))
         {
             $image1 = $request->file('image');

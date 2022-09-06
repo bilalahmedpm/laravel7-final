@@ -19,10 +19,10 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin123'),
         ]);
         \App\User::create([
-            'name' => 'farzana',
-            'email' => 'ifarzana24@gmail.com',
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
             'role' => '2',
-            'password' => Hash::make('user1234'),
+            'password' => Hash::make('12345678'),
         ]);
     }
 }
