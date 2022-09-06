@@ -30,12 +30,8 @@ class ClientMail extends Mailable
      */
     public function build()
     {
-//        return $this->view('view.name');
-        return $this->from('bilalmujahid89@gmail.com' , 'Laravel Simple Mail Testing')
-            ->view('admin.client.mail')
-            ->with([
-               'client' => $this->client,
-            ]);
-    }
+        return $this->from('bilalmujahid89@gmail.com', 'Laravel')
+            ->view('admin.mail')->with(['client' => $this->client]);
 
+    }
 }

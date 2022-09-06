@@ -45,9 +45,11 @@ class ClientController extends Controller
         $clients->cnic = $request-> cnic;
         $clients->dob = $request-> dob;
         $clients->description = $request->description;
+
         $email = $request->email;
         dispatch(new TesTEmailJob($clients,$email))->delay(\carbon\carbon::now()->addSeconds(5));
 //        Mail::to($request->email)->send(new ClientMail($clients));
+
         if ($request->hasFile('image'))
         {
             $image1 = $request->file('image');

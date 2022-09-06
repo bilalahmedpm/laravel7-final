@@ -1,5 +1,4 @@
 @extends('admin.layouts.include')
-
 @section('content')
     <section class="content">
         <div class="container-fluid">
@@ -21,12 +20,12 @@
                                     <input type="text" class="form-control" name="name" placeholder="Full Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Cnic</label>
-                                    <input type="text" class="form-control" name="cnic" placeholder="Cnic" required>
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Enter Email " required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Enter your Email Address" required>
+                                    <label>Cnic</label>
+                                    <input type="text" class="form-control" name="cnic" placeholder="Cnic" required>
                                 </div>
                                 <div class="form-group">
                                     <label>DOB</label>
