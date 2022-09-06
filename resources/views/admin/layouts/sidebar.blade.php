@@ -39,36 +39,7 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
+
                         </p>
                     </a>
                 </li>
@@ -96,18 +67,22 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}" class="nav-link"
+                       onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                        <i class="nav-icon fas fa-sign-out-alt" ></i>
+                        <p>
+                            Logout
+                        </p>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </a>
+                </li>
             </ul>
         </nav>
 
-        <a  href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-           document.getElementById('logout-form').submit();">
-            <button type="button" class="btn btn-block btn-primary">Logout</button>
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-        <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
 </aside>

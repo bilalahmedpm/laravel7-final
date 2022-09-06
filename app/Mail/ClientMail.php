@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use App\Jobs\TesTEmailJob;
 use Illuminate\Queue\SerializesModels;
 
 class ClientMail extends Mailable
@@ -16,9 +17,10 @@ class ClientMail extends Mailable
      *
      * @return void
      */
-    public function __construct($client)
+    public function __construct($clients,$email)
+
     {
-        $this->client = $client;
+        $this->client = $clients;
     }
 
     /**
