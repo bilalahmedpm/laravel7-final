@@ -43,6 +43,7 @@ class ClientController extends Controller
         $clients->name = $request-> name;
         $clients->cnic = $request-> cnic;
         $clients->dob = $request-> dob;
+
         $clients->description = $request->description;
 
         Mail::to($request->email)->send(new  ClientMail($clients));
