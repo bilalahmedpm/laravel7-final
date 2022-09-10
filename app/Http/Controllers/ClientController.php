@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\client;
+use App\Jobs\TesTEmailJob;
 use App\Mail\ClientMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -46,7 +47,10 @@ class ClientController extends Controller
 
         $clients->description = $request->description;
 
-        Mail::to($request->email)->send(new  ClientMail($clients));
+        $email = $request->email;
+        dispatch(new TesTEmailJob($clients,$email))->delay(\carbon\carbon::now()->addSeconds(5));
+//        Mail::to($request->email)->send(new ClientMail($clients));
+
         if ($request->hasFile('image'))
         {
             $image1 = $request->file('image');
